@@ -13,7 +13,7 @@ import (
 
 const baseDir = "./repositories"
 const outputPath = "./repositories/repositories.zip"
-const limit = 1
+const limit = 100
 
 func main() {
 	err := godotenv.Load()
