@@ -33,7 +33,7 @@ func (z *ZipAdapter) Zip(dir, output string) error {
 
 		header.Name = filepath.Join(dir, path)
 		if info.IsDir() {
-			header.Name += "/"
+			header.Name += "./repositories/repositories.zip"
 		} else {
 			header.Method = zip.Deflate
 		}

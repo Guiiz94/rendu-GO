@@ -10,7 +10,7 @@ import (
 type CSVAdapter struct{}
 
 func (c *CSVAdapter) Write(repos []domain.Repository) error {
-	file, err := os.Create("repositories.csv")
+	file, err := os.Create("./repositories/repositories.csv")
 	if err != nil {
 		return err
 	}

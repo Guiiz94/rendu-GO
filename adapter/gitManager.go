@@ -1,6 +1,7 @@
 package adapters
 
 import (
+	"fmt"
 	"os/exec"
 
 	"github.com/Guiiz94/rendu-GO/domain"
@@ -10,6 +11,8 @@ type GitAdapter struct{}
 
 func (g *GitAdapter) Clone(repo domain.Repository, dir string) error {
 	cmd := exec.Command("git", "clone", repo.CloneURL, dir)
+	fmt.Printf("Cloning repo: %s. Directory: %s\n", repo.Name, dir)
+	fmt.Printf("Command: %s\n", cmd.String())
 	return cmd.Run()
 }
 

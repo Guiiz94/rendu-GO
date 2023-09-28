@@ -1,6 +1,8 @@
 package usecases
 
 import (
+	"fmt"
+
 	"github.com/Guiiz94/rendu-GO/domain"
 )
 
@@ -12,6 +14,8 @@ func (cr *CloneRepositoriesUseCase) CloneAll(repos []domain.Repository, baseDir 
 	for _, repo := range repos {
 		dir := baseDir + "/" + repo.Name
 		if err := cr.Git.Clone(repo, dir); err != nil {
+			fmt.Println(repo)
+			fmt.Println(dir)
 			return err
 		}
 	}

@@ -3,16 +3,29 @@ package main
 import (
 	"fmt"
 	"log"
+	"os"
+	"github.com/joho/godotenv"
+
 	"github.com/Guiiz94/rendu-GO/adapter"
 	"github.com/Guiiz94/rendu-GO/useCase"
 	// "github.com/Guiiz94/rendu-GO/domain"
 )
 
 const baseDir = "./repositories"
-const outputPath = "./repositories.zip"
-const limit = 100
+const outputPath = "./repositories/repositories.zip"
+const limit = 1
 
 func main() {
+	err := godotenv.Load()
+    if err != nil {
+        log.Fatal("Error loading .env file")
+    }
+
+	username := os.Getenv("GIT_PSEUDO")
+	if username == "" {
+		log.Fatal("Please set the USERNAME environment variable")
+	}
+
 	githubAdapter := &adapters.GithubAPIAdapter{}
 	csvAdapter := &adapters.CSVAdapter{}
 	gitAdapter := &adapters.GitAdapter{}
@@ -24,9 +37,9 @@ func main() {
 	updateUC := &usecases.UpdateRepositoriesUseCase{Git: gitAdapter}
 	zipUC := &usecases.ZipRepositoriesUseCase{Zipper: zipAdapter}
 
-	username := "Guiiz94"  // Nom d'utilisateur souhaité à mettre dans le .env
+	// username := "Guiiz94" 
 
-	repos, err := listUC.List(username, limit)
+	repos, err := listUC.List("Guiiz94", limit)
 	if err != nil {
 		log.Fatalf("Error listing repositories: %v", err)
 	}

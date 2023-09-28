@@ -1,9 +1,10 @@
-FROM golang:1.17-alpine AS builder
+FROM golang:1.21.1-alpine AS builder
+RUN apk update && apk add --no-cache git
 
-WORKDIR /myapp
-COPY . /myapp
+WORKDIR /go/app
+COPY . .
 
-RUN go mod download
+RUN go install
+RUN go build .
 
-
-CMD ["go", "run", "/myapp/main.go"]
+ENTRYPOINT [ "/go/app/rendu-GO" ]
