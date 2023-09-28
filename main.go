@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 	"log"
-	"rendu-GO/adapters"
-	"rendu-GO/usecases"
-	"rendu-GO/domain"
+	"github.com/Guiiz94/rendu-GO/adapter"
+	"github.com/Guiiz94/rendu-GO/useCase"
+	// "github.com/Guiiz94/rendu-GO/domain"
 )
 
 const baseDir = "./repositories"

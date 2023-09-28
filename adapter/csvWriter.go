@@ -4,7 +4,7 @@ import (
 	"encoding/csv"
 	"os"
 
-	"rendu-GO/domain"
+	"github.com/Guiiz94/rendu-GO/domain"
 )
 
 type CSVAdapter struct{}
@@ -20,7 +20,7 @@ func (c *CSVAdapter) Write(repos []domain.Repository) error {
 	defer writer.Flush()
 
 	for _, repo := range repos {
-		err := writer.Write([]string{repo.Name, repo.HTMLURL, repo.UpdatedAt.String(), repo.CloneURL})
+		err := writer.Write([]string{repo.Name, repo.HTMLURL, repo.UpdatedAt, repo.CloneURL})
 		if err != nil {
 			return err
 		}

@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"time"
 
-	"rendu-GO/domain"
+	"github.com/Guiiz94/rendu-GO/domain"
 )
 
 type GithubAPIAdapter struct{}
@@ -33,7 +33,7 @@ func (g *GithubAPIAdapter) List(username string) ([]domain.Repository, error) {
 		repos = append(repos, domain.Repository{
 			Name:       apiRepo.Name,
 			HTMLURL:    apiRepo.HTMLURL,
-			UpdatedAt:  apiRepo.UpdatedAt,
+			UpdatedAt: apiRepo.UpdatedAt.Format(time.RFC3339),
 			CloneURL:   apiRepo.CloneURL,
 		})
 	}

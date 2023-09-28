@@ -1,8 +1,9 @@
 package usecases
 
 import (
-	"rendu-GO/domain"
+	"github.com/Guiiz94/rendu-GO/domain"
 	"sort"
+	"time"
 )
 
 type ListRepositoriesUseCase struct {
@@ -16,8 +17,17 @@ func (lr *ListRepositoriesUseCase) List(username string, limit int) ([]domain.Re
 	}
 
 	sort.Slice(repos, func(i, j int) bool {
-		return repos[i].UpdatedAt.After(repos[j].UpdatedAt)
+		timeI, errI := time.Parse(time.RFC3339, repos[i].UpdatedAt)
+		timeJ, errJ := time.Parse(time.RFC3339, repos[j].UpdatedAt)
+		
+		// Gérer les erreurs de parsing si nécessaire
+		if errI != nil || errJ != nil {
+			return false  // ou un autre comportement par défaut
+		}
+	
+		return timeI.After(timeJ)
 	})
+	
 
 	if len(repos) > limit {
 		return repos[:limit], nil
