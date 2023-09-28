@@ -21,7 +21,7 @@ func (g *GithubAPIAdapter) List(username string) ([]domain.Repository, error) {
 	}
 
 	token := os.Getenv("GITHUB_TOKEN")
-	
+
 	req, err := http.NewRequest("GET", fmt.Sprintf("https://api.github.com/users/%s/repos", username), nil)
 	if err != nil {
 		return nil, err
@@ -29,7 +29,7 @@ func (g *GithubAPIAdapter) List(username string) ([]domain.Repository, error) {
 
 	// Si le token est disponible, on l'ajoute à la requête
 	if token != "" {
-		req.Header.Set("Authorization", "token "+token)
+		req.Header.Add("Authorization", "token "+token)
 	}
 
 	client := &http.Client{}
