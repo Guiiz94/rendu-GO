@@ -1,7 +1,7 @@
 package usecases
 
 import (
-	"github.com/rendu-GO/domain"
+	"rendu-GO/domain"
 )
 
 type UpdateRepositoriesUseCase struct {

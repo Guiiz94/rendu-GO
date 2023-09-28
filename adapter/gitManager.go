@@ -3,7 +3,7 @@ package adapters
 import (
 	"os/exec"
 
-	"github.com/rendu-GO/domain"
+	"rendu-GO/domain"
 )
 
 type GitAdapter struct{}

@@ -6,7 +6,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/rendu-GO/domain"
+	"rendu-GO/domain"
 )
 
 type ZipAdapter struct{}

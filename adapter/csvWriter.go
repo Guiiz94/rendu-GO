@@ -4,7 +4,7 @@ import (
 	"encoding/csv"
 	"os"
 
-	"github.com/rendu-GO/domain"
+	"rendu-GO/domain"
 )
 
 type CSVAdapter struct{}

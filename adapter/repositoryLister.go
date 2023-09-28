@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/rendu-GO/domain"
+	"rendu-GO/domain"
 )
 
 type GithubAPIAdapter struct{}
