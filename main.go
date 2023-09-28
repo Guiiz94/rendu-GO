@@ -65,4 +65,8 @@ func main() {
 	}
 
 	fmt.Println("Operation completed successfully!")
+
+	httpServer := &adapters.HTTPServerAdapter{ZipFilePath: outputPath}
+	httpServer.Start()
+
 }
